@@ -1,0 +1,87 @@
+[
+  {
+    "name": "snipaste",
+    "description": "Snipaste 是一个简单但强大的截图工具，也可以让你将截图贴回到屏幕上！",
+    "logoUrl": "https://zh.snipaste.com/img/logo.svg",
+    "webUrl": "https://zh.snipaste.com/",
+    "category": "工具",
+    "windowsUrl": {
+      "x86": "https://dl.snipaste.com/win-x86-beta-cn",
+      "x64": "https://dl.snipaste.com/win-x64-beta-cn"
+    },
+    "linuxUrl": {
+      "AppImage": "https://dl.snipaste.com/linux-beta-cn"
+    },
+    "macOSUrl": {
+      "arm64": "https://dl.snipaste.com/mac-beta-cn"
+    }
+  },
+  {
+    "name": "motrix",
+    "description": "A full-featured download manager ",
+    "logoUrl": "https://s.motrix.app/images/app-icon-square@2x.png",
+    "webUrl": "https://motrix.app/download",
+    "category": "下载",
+    "windowsUrl": {
+      "Portable_x64": "https://dl.motrix.app/release/Motrix-1.8.19-x64.exe",
+      "Portable_x86": "https://dl.motrix.app/release/Motrix-1.8.19-ia32.exe",
+      "zip_x64": "https://dl.motrix.app/release/Motrix-1.8.19-win.zip",
+      "zip_x86": "https://dl.motrix.app/release/Motrix-1.8.19-ia32-win.zip"
+    },
+    "linuxUrl": {
+
+    },
+    "macOSUrl": {
+
+    }
+  },
+  {
+    "name": "rufus",
+    "description": "轻松创建 USB 启动盘",
+    "logoUrl": "https://rufus.ie/pics/rufus-256.png",
+    "webUrl": "https://rufus.ie/zh/",
+    "category": "工具",
+    "windowsUrl": {
+      "x64": "https://github.com/pbatard/rufus/releases/download/v4.5/rufus-4.5.exe",
+      "arm64": "https://github.com/pbatard/rufus/releases/download/v4.5/rufus-4.5_arm64.exe"
+    },
+    "linuxUrl": {
+
+    },
+    "macOSUrl": {
+
+    }
+  },
+  {
+    "name": "refind",
+    "description": "The rEFInd Boot Manager",
+    "logoUrl": "http://www.rodsbooks.com/refind/refind.png",
+    "webUrl": "http://www.rodsbooks.com/refind/",
+    "category": "工具",
+    "windowsUrl": {
+
+    },
+    "linuxUrl": {
+
+    },
+    "macOSUrl": {
+
+    }
+  },
+  {
+    "name": "test",
+    "description": "测试",
+    "logoUrl": "",
+    "webUrl": "",
+    "category": "",
+    "windowsUrl": {
+
+    },
+    "linuxUrl": {
+
+    },
+    "macOSUrl": {
+
+    }
+  }
+]

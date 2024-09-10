@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resource/windows.png</file>
+        <file>resource/windows.svg</file>
+        <file>resource/app.png</file>
+        <file>resource/AppStore.png</file>
+        <file>resource/settings.png</file>
+        <file>resource/github.png</file>
+        <file>resource/search.png</file>
+    </qresource>
+</RCC>
