@@ -3,15 +3,12 @@
 
 #include <QDialog>
 #include <QLineEdit>
+#include "pathselectedit.h"
 
 class SettingDialog : public QDialog
 {
 public:
-    QLineEdit *name;
-    QLineEdit *host;
-    QLineEdit *port;
-    QLineEdit *username;
-    QLineEdit *passwd;
+    PathSelectEdit *pathSelectEdit;
 
     SettingDialog(QWidget *parent = nullptr);
 

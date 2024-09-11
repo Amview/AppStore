@@ -15,10 +15,12 @@
 using namespace std;
 namespace fs = std::filesystem;
 const string ConfigUtils::cachePath = "cache";
+const string ConfigUtils::configPath = "/Users/hua/file/project/guthub/AppStore/config.json";
+const string ConfigUtils::appsPath = "/Users/hua/file/project/guthub/AppStore/apps.json";
 
 vector<AppInfo*> ConfigUtils::readApps() {
     vector<AppInfo*> list;
-    QJsonDocument doc = QJsonUtils::readJsonFile("/Users/hua/file/project/qtDesign/AppStore/apps.json");
+    QJsonDocument doc = QJsonUtils::readJsonFile(appsPath);
     if (!doc.isEmpty() && doc.isArray()) {
         QJsonArray array = doc.array();
         for (const auto &item: array) {
@@ -49,8 +51,26 @@ vector<AppInfo*> ConfigUtils::readApps() {
     return list;
 }
 
+bool ConfigUtils::writeConfig(Config &config) {
+    QJsonObject obj;
+    obj.insert("downloadPath", QJsonValue(config.getDownloadPath().data()));
+    QJsonDocument doc(obj);
+    QByteArray data = doc.toJson(QJsonDocument::Indented);
+    QFile file(QString::fromStdString(configPath));
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        if (!file.write(data)) {
+            qDebug() << "Failed to write data to file.";
+            return false;
+        }
+        file.close();
+        return true;
+    }
+    return false;
+}
+
+
 Config ConfigUtils::readConfig() {
-    QJsonDocument doc = QJsonUtils::readJsonFile("/Users/hua/file/project/qtDesign/AppStore/config.json");
+    QJsonDocument doc = QJsonUtils::readJsonFile(configPath);
     Config config;
     if (!doc.isEmpty() && doc.isObject()) {
         config.setDownloadPath(QJsonUtils::getString(doc.object(), "downloadPath"));

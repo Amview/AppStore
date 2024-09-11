@@ -18,6 +18,7 @@ void PathSelectEdit::initUi() {
             background-color: #f5f7fa;
             border-radius: 5px;
             padding-left: 5px;
+            color: #555555;
         }
         QLineEdit:hover {
             //background-color: #fbfdff;

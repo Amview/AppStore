@@ -5,6 +5,7 @@
 #include <QFileDialog>
 #include <QStandardPaths>
 #include <QEnterEvent>
+#include "../utils/config_utils.h"
 
 class PathSelectEdit : public QLineEdit
 {
@@ -29,8 +30,6 @@ protected:
             QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
         if (!dir.isEmpty()) {
             setText(dir);
-        } else {
-            setText(downloadDirs.first());
         }
     }
 signals:

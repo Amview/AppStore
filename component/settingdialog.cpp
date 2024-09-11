@@ -19,7 +19,8 @@ SettingDialog::SettingDialog(QWidget *parent) : QDialog(parent) {
     QHBoxLayout *layout1 = new QHBoxLayout();
     QWidget *widget1 = new QWidget();
     widget1->setLayout(layout1);
-    PathSelectEdit *pathSelectEdit = new PathSelectEdit();
+    pathSelectEdit = new PathSelectEdit();
+    pathSelectEdit->setText(QString::fromStdString(ConfigUtils::readConfig().getDownloadPath()));
     layout1->addWidget(new QLabel("下载路径："));
     layout1->addWidget(pathSelectEdit);
     mainLay->addWidget(widget1);
@@ -56,5 +57,9 @@ void SettingDialog::checkBeforeClosing()
 //        // 如果文本不为空，则正常关闭对话框
 //        accept();
 //    }
-    accept();
+    Config config;
+    config.setDownloadPath(pathSelectEdit->text().toStdString());
+    if (ConfigUtils::writeConfig(config)) {
+        accept();
+    }
 }

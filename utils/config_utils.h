@@ -13,8 +13,12 @@ class ConfigUtils : public QObject{
 Q_OBJECT
 public:
     static const string cachePath;
+    static const string configPath;
+    static const string appsPath;
+
     static vector<AppInfo*> readApps();
     static Config readConfig();
+    static bool writeConfig(Config& config);
     static bool createDir(const string& dir);
     static bool clearCache();
 };
