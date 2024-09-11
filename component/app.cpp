@@ -192,8 +192,8 @@ void App::setWindowsUrl(const map<string, string> map) {
         btn->setToolTip(QString::fromStdString(item.second));
         connect(btn, &QPushButton::clicked, [item, btn]()  {
             if (btn->text() == "打开") {
-                QString homePath = QStandardPaths::writableLocation(QStandardPaths::DownloadLocation);
-                QUrl url(homePath);
+//                QString homePath = QStandardPaths::writableLocation();
+                QUrl url(QString::fromStdString(ConfigUtils::readConfig().getDownloadPath()));
                 url.setScheme("file");
                 // 使用 QDesktopServices 打开文件管理器
                 if (!QDesktopServices::openUrl(url)) {

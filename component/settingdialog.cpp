@@ -9,6 +9,7 @@
 #include <QMessageBox>
 #include "pathselectedit.h"
 #include "../utils/config_utils.h"
+#include "../utils/layout_utils.h"
 SettingDialog::SettingDialog(QWidget *parent) : QDialog(parent) {
     setWindowTitle("设置");
     setFixedSize(500, 300);
@@ -16,23 +17,21 @@ SettingDialog::SettingDialog(QWidget *parent) : QDialog(parent) {
     QVBoxLayout *mainLay = new QVBoxLayout(this);
     mainLay->setContentsMargins(10, 10, 10, 10);
 
-    QHBoxLayout *layout1 = new QHBoxLayout();
-    QWidget *widget1 = new QWidget();
-    widget1->setLayout(layout1);
+    QWidget *downloadWt = LayoutUtils::createQWidget(new QHBoxLayout());
     pathSelectEdit = new PathSelectEdit();
     pathSelectEdit->setText(QString::fromStdString(ConfigUtils::readConfig().getDownloadPath()));
-    layout1->addWidget(new QLabel("下载路径："));
-    layout1->addWidget(pathSelectEdit);
-    mainLay->addWidget(widget1);
+    downloadWt->layout()->addWidget(new QLabel("下载路径："));
+    downloadWt->layout()->addWidget(pathSelectEdit);
+    mainLay->addWidget(downloadWt);
 
-    QHBoxLayout *layout2 = new QHBoxLayout();
-    QWidget *widget2 = new QWidget();
-    widget2->setLayout(layout2);
+    QHBoxLayout *clearLy = new QHBoxLayout();
+    QWidget *clearWt = new QWidget();
+    clearWt->setLayout(clearLy);
     QPushButton *clearCacheBtn = new QPushButton("清除");
-    layout2->addWidget(new QLabel("清除缓存："));
-    layout2->addWidget(clearCacheBtn, Qt::AlignLeft);
-    layout2->addStretch(1);
-    mainLay->addWidget(widget2);
+    clearLy->addWidget(new QLabel("清除缓存："));
+    clearLy->addWidget(clearCacheBtn, Qt::AlignLeft);
+    clearLy->addStretch(1);
+    mainLay->addWidget(clearWt);
     connect(clearCacheBtn, &QPushButton::clicked, []() {
         ConfigUtils::clearCache();
     });

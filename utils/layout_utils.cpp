@@ -15,3 +15,9 @@ void LayoutUtils::clearLayout(QLayout *layout) {
         delete item; // 删除布局项
     }
 }
+
+QWidget* LayoutUtils::createQWidget(QLayout* layout) {
+    QWidget *widget = new QWidget();
+    widget->setLayout(layout);
+    return widget;
+}

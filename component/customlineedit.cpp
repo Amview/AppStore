@@ -10,11 +10,11 @@ CustomLineEdit::CustomLineEdit(QWidget *parent) : QLineEdit(parent) {
 
 void CustomLineEdit::initUi() {
     this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-    this->setMinimumHeight(30);
-    setPlaceholderText("搜索");
+    this->setMinimumHeight(25);
     this->setStyleSheet(R"(
         QLineEdit {
-            background-color: #e9e9e9;
+            border: 1px solid #dddfe5;
+            background-color: #f5f7fa;
             padding-left: 3px;
             border-radius: 6px;
             color: #606266;

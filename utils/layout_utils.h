@@ -12,6 +12,7 @@ class LayoutUtils {
 public:
 
     static void clearLayout(QLayout* layout);
+    static QWidget* createQWidget(QLayout* layout);
 
 };
 

@@ -24,13 +24,15 @@ void MainWindow::initUI() {
     contentWidget->setLayout(contentLayout);
 
     QVBoxLayout *menuLayout = new QVBoxLayout();
-    menuLayout->setContentsMargins(10,10,10,10);
+    menuLayout->setContentsMargins(10,30,10,10);
     QWidget *menuWidget = new QWidget();
     menuWidget->setObjectName("menuWidget");
     menuWidget->setFixedWidth(200);
     menuWidget->setLayout(menuLayout);
 
     CustomLineEdit *search = new CustomLineEdit();
+    search->setPlaceholderText("搜索");
+    search->setFixedHeight(30);
     menuLayout->addWidget(search);
     connect(search, &CustomLineEdit::returnPressed, [this, search]() {
         loadApps(string(), search->text().toStdString());
@@ -108,6 +110,7 @@ void MainWindow::initUI() {
 
     // 创建一个滚动区域
     QScrollArea *scrollArea = new QScrollArea();
+    scrollArea->setContentsMargins(0, 0, 0, 0);
     scrollArea->setWidgetResizable(true); // 允许根据内容调整大小
     scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff); // 水平滚动条按需显示
     scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded); // 垂直滚动条按需显示

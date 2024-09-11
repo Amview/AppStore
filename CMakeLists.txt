@@ -12,6 +12,8 @@ SET(CMAKE_FIND_LIBRARY_SUFFIXES ".lib" ".LIB" ".dll" ".DLL" ".dylib")
 include_directories("/Users/hua/file/project/源码/cpp-httplib-0.16.0")
 find_package(OpenSSL REQUIRED)
 include_directories(${OPENSSL_INCLUDE_DIRS})
+SET(CMAKE_FIND_LIBRARY_SUFFIXES ".lib" ".LIB" ".dll" ".DLL" ".dylib")
+
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Network)
 
@@ -44,6 +46,9 @@ set(PROJECT_SOURCES
         component/customlineedit.cpp
         ui.cpp
         component/pathselectedit.cpp
+        framelesswindow/framelesswindow.h
+        framelesswindow/framelesswindow.cpp
+        framelesswindow/framelesswindow.mm
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

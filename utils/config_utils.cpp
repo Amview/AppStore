@@ -98,5 +98,4 @@ bool ConfigUtils::clearCache() {
     if (!dir.exists()) {
         return true;
     }
-
 }

@@ -1,12 +1,13 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "framelesswindow/framelesswindow.h"
 #include <QMainWindow>
 #include <QListWidget>
 #include <QVBoxLayout>
 #include "domain/app_info.h"
 
-class MainWindow : public QMainWindow
+class MainWindow : public CFramelessWindow
 {
     Q_OBJECT
 private:

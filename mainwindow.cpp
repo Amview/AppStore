@@ -11,7 +11,7 @@
 #include "utils/string_utils.h"
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
+    : CFramelessWindow(parent)
 {
     initUI();
     ConfigUtils::createDir(ConfigUtils::cachePath);
