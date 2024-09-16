@@ -8,7 +8,7 @@
 
 #include "../domain/app_info.h"
 #include "../domain/config.h"
-
+#include <QNetworkReply>
 class ConfigUtils : public QObject{
 Q_OBJECT
 public:
@@ -18,9 +18,13 @@ public:
 
     static vector<AppInfo*> readApps();
     static Config readConfig();
+    static bool updateAppsConfig();
     static bool writeConfig(Config& config);
     static bool createDir(const string& dir);
     static bool clearCache();
+
+private:
+//    static QNetworkReply *reply;
 };
 
 

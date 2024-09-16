@@ -13,6 +13,7 @@ class Config : public QObject{
 Q_OBJECT
 private:
     string downloadPath;
+    string appsUrl;
 
 public:
     Config();
@@ -26,6 +27,10 @@ public:
     void setDownloadPath(const string &downloadPath) {
         Config::downloadPath = downloadPath;
     }
+
+    const string &getAppsUrl() const;
+
+    void setAppsUrl(const string &appsUrl);
 };
 
 

@@ -49,6 +49,7 @@ set(PROJECT_SOURCES
         framelesswindow/framelesswindow.h
         framelesswindow/framelesswindow.cpp
         framelesswindow/framelesswindow.mm
+        blur_effect.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

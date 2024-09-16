@@ -1,3 +1,4 @@
 {
-    "downloadPath": "/Users/hua/Downloads"
+    "appsUrl": "https://raw.githubusercontent.com/Amview/AppStore/refs/heads/main/apps.json",
+    "downloadPath": "/Volumes/optane/download"
 }

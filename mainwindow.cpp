@@ -9,7 +9,7 @@
 #include <set>
 #include "utils/layout_utils.h"
 #include "utils/string_utils.h"
-
+#include "blur_effect.h"
 MainWindow::MainWindow(QWidget *parent)
     : CFramelessWindow(parent)
 {

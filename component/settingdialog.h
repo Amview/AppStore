@@ -4,11 +4,12 @@
 #include <QDialog>
 #include <QLineEdit>
 #include "pathselectedit.h"
-
+#include "customlineedit.h"
 class SettingDialog : public QDialog
 {
 public:
     PathSelectEdit *pathSelectEdit;
+    CustomLineEdit *appsUrlEdit;
 
     SettingDialog(QWidget *parent = nullptr);
 

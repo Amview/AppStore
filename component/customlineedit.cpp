@@ -14,7 +14,7 @@ void CustomLineEdit::initUi() {
     this->setStyleSheet(R"(
         QLineEdit {
             border: 1px solid #dddfe5;
-            background-color: #f5f7fa;
+            background-color: #fff;
             padding-left: 3px;
             border-radius: 6px;
             color: #606266;

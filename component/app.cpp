@@ -8,6 +8,9 @@
 #include <QFile>
 #include <QStandardPaths>
 #include <QMessageBox>
+#include <QStringList>
+#include <QProcess>
+#include <QFileInfo>
 #include <future>
 #include "app.h"
 #include "../utils/string_utils.h"
@@ -193,6 +196,7 @@ void App::setWindowsUrl(const map<string, string> map) {
         connect(btn, &QPushButton::clicked, [item, btn]()  {
             if (btn->text() == "打开") {
 //                QString homePath = QStandardPaths::writableLocation();
+
                 QUrl url(QString::fromStdString(ConfigUtils::readConfig().getDownloadPath()));
                 url.setScheme("file");
                 // 使用 QDesktopServices 打开文件管理器
@@ -200,6 +204,11 @@ void App::setWindowsUrl(const map<string, string> map) {
                     QMessageBox::warning(btn, tr("Open Directory"),
                                          tr("Could not open directory"));
                 }
+//                const QString explore = "explore";
+//                QStringList param;
+//                if (!QFileInfo(QString::fromStdString(ConfigUtils::readConfig().getDownloadPath())).isDir())
+//                    param << QLatin1String("/select,");
+//                QProcess::startDetached(explore, param);
                 return;
             }
             std::thread th([&](){

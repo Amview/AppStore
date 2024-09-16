@@ -11,12 +11,16 @@
 #include <QJsonObject>
 #include "qjson_utils.h"
 #include <vector>
+#include "httplib.h"
+#include <QNetworkAccessManager>
+#include <QMessageBox>
+#include <QNetworkReply>
 #include "../domain/app_info.h"
 using namespace std;
 namespace fs = std::filesystem;
 const string ConfigUtils::cachePath = "cache";
-const string ConfigUtils::configPath = "/Users/hua/file/project/guthub/AppStore/config.json";
-const string ConfigUtils::appsPath = "/Users/hua/file/project/guthub/AppStore/apps.json";
+const string ConfigUtils::configPath = "config.json";
+const string ConfigUtils::appsPath = "apps.json";
 
 vector<AppInfo*> ConfigUtils::readApps() {
     vector<AppInfo*> list;
@@ -54,6 +58,7 @@ vector<AppInfo*> ConfigUtils::readApps() {
 bool ConfigUtils::writeConfig(Config &config) {
     QJsonObject obj;
     obj.insert("downloadPath", QJsonValue(config.getDownloadPath().data()));
+    obj.insert("appsUrl", QJsonValue(config.getAppsUrl().data()));
     QJsonDocument doc(obj);
     QByteArray data = doc.toJson(QJsonDocument::Indented);
     QFile file(QString::fromStdString(configPath));
@@ -74,6 +79,7 @@ Config ConfigUtils::readConfig() {
     Config config;
     if (!doc.isEmpty() && doc.isObject()) {
         config.setDownloadPath(QJsonUtils::getString(doc.object(), "downloadPath"));
+        config.setAppsUrl(QJsonUtils::getString(doc.object(), "appsUrl"));
     }
     return config;
 }
@@ -98,4 +104,22 @@ bool ConfigUtils::clearCache() {
     if (!dir.exists()) {
         return true;
     }
+}
+
+bool ConfigUtils::updateAppsConfig() {
+    QNetworkAccessManager *manager = new QNetworkAccessManager();
+    QUrl url(QString::fromStdString(readConfig().getAppsUrl()));
+    QNetworkRequest request(url);
+    QNetworkReply *reply = manager->get(request);
+    connect(reply, &QNetworkReply::finished, [reply]() {
+        if (reply->error() == QNetworkReply::NoError) {
+            QByteArray data = reply->readAll();
+            QFile file("apps.json");
+            if (file.open(QIODevice::WriteOnly)) {
+                file.write(data);
+            }
+            file.close();
+            QMessageBox::information(nullptr, "" ,"下载成功");
+        }
+    });
 }
